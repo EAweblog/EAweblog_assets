@@ -44,7 +44,6 @@ def main():
         usa_above_threshold = fraction*usa[population_col]
         usa_fraction_above_threshold = usa_above_threshold/total_above_threshold
         usa_data.append( (IQ, usa_fraction_above_threshold) )
-        #print(f"{IQ}, {total_above_threshold/world_population:.3f}, {usa_above_threshold/total_above_threshold:.3f},", round(total_above_threshold))
     IQs, fractions_above_threshold = zip(*usa_data)
 
     import matplotlib.pyplot as plt
