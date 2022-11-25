@@ -129,25 +129,26 @@ def main():
 
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots()
-    plt.title('County-Level Crime and Population Ratios')
+    plt.suptitle('County-Level Crime and Population Ratios')
+    plt.title('2020 NIBRS Incident-Level File')
     plt.xscale('log')
     plt.yscale('log')
     ax.scatter(ivdf['pop ratio'], ivdf['incidents ratio'] )
     ax.scatter([USA['pop ratio']], [USA['incidents ratio']], c='orange')
     ax.annotate('USA', (USA['pop ratio'], USA['incidents ratio']))
 
-    from math import log, exp
-    a, b = np.polyfit(ivdf['pop ratio'].apply(log), ivdf['incidents ratio'].apply(log), 1)
+    from math import log10
+    a, b = np.polyfit(ivdf['pop ratio'].apply(log10), ivdf['incidents ratio'].apply(log10), 1)
     x = np.array(ivdf['pop ratio'])
-    plt.plot(x, (x**a*exp(b)), c='orange')
-    plt.annotate(f"log(y) = {a:.2f} log(x) + {b:.2f}", (1.5, 2))
-    print(exp(b))
+    plt.plot(x, (x**a*10**b), c='orange')
+    plt.annotate(f"$\log_{{10}}(y) = {a:.3f} \log_{{10}}(x) + {b:.3f}$", (1.5, 2))
     print(USA['incidents ratio'])
 
     ax.set_ylabel('ratio of black-on-white violent incidents\nto white-on-black violent incidents')
     ax.set_xlabel('ratio of white population to black population')
 
     plt.axvline(1)
+    plt.axhline(1)
     plt.show()
 
 if __name__ == '__main__':
