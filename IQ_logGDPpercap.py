@@ -48,7 +48,7 @@ pcap_df = read_spreadsheet()
 
 iq_df = iq_df[pd.notna(iq_df['Country name'])]
 iq_df.rename(columns={'ISO 3166-1 ALPHA-3': 'ISO_A3'}, inplace=True)
-iq_df.ISO_A3 = iq_df.ISO_A3.apply(lambda x: x.strip()) # France (and others?) Have a trailing ' ' which messes up the data
+iq_df.ISO_A3 = iq_df.ISO_A3.apply(lambda x: x.strip(' .')) # France (and others?) Have a trailing ' ' which messes up the data
 iq_df = iq_df.set_index('ISO_A3')
 # IQ_variable = 'R'
 IQ_variable = 'QNW+SAS+GEO'
