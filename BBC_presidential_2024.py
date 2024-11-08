@@ -1,9 +1,13 @@
 import os, io
 from time import sleep
 
+# to install package dependencies:
+# pip install pandas matplotlib
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# to install package dependencies:
+# pip install selenium undetected_chromedriver diskcache
 from selenium.webdriver.chrome.options import Options
 import undetected_chromedriver as uc
 import diskcache as dc
