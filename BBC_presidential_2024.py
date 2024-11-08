@@ -30,6 +30,9 @@ def get_rendered_DOM(url):
     mhtml = driver.execute_cdp_cmd('Page.captureSnapshot', {'format': 'mhtml'})
     return mhtml['data']
 
+# steps to get the url that I assign to `url_2024` below:
+# step 1: Go to https://www.bbc.com/news/election/2024/us/results
+# step 2: Click on "Get the results in table format"
 url_2024 = "https://www.bbc.com/news/articles/cvglg3klrpzo"
 rendered_DOM_2024 = get_rendered_DOM(url_2024)
 df_2024 = pd.read_html(io.StringIO(rendered_DOM_2024))
