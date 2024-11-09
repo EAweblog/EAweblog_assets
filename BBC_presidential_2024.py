@@ -58,8 +58,7 @@ All_Votes_df = pd.DataFrame.from_dict(All_Votes, orient='index')
 All_Votes_df.index.name = 'Year'
 print(All_Votes_df)
 All_Votes_df.plot.bar(color = {"Democrat": "royalblue", "Republican": "indianred"})
-plt.axhline(y=65853514, color='orange', linestyle='dashed', linewidth=1.5)
-
+plt.axhline(y=All_votes['2016']['Democrat'], color='orange', linestyle='dashed', linewidth=1.5)
 
 plt.xlabel("Year")
 plt.ylabel("Votes")
